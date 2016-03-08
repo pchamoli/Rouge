@@ -25,7 +25,7 @@ public class MySqlLocalDAO implements LocalDAO {
 		
 		try {
 			conn = ConexionDB.getConexion();
-			String sql="select * from local where dir_local=? and nom_local=?";
+			String sql="select * from tb_local where dir_local=? and nom_local=?";
 			pstm = conn.prepareStatement(sql);
 			
 			pstm.setString(1, lugar);

@@ -87,6 +87,20 @@
                       <input id="name" required="" type"text"> 
                       <br> 
                     </td>
+                    <td>
+                      <label for="usuario">Usuario (10 caracteres máximo):</label> 
+                      <br> 
+                      <input id="usuario" required="" type"text"> 
+                      <br>
+                    </td> 
+                    <td>
+                      Sexo:<select  value="0">
+                         <option value="0">(...)</option>             
+                         <option value="1">Masculino</option>
+                         <option value="2">Femenino</option>
+                         <option value="3">Prefiero no Decirlo</option>
+                       </select>
+                    </td>
                   <tr>
                     <td>
                       <br> 
@@ -95,7 +109,7 @@
                       <input id="e-mail" required="" type="email"> 
                       <br> 
                     </td>                      
-                    <td>                      
+                    <td colspan="2">                      
                       <br> 
                       <label for="confirm-e-mai"> Confirmar Correo Electrónico:</label> 
                       <br> 
@@ -111,7 +125,7 @@
                       <input id="password" required="" type="password"> 
                       <br> 
                     </td>
-                    <td>
+                    <td colspan="2">
                       <br> 
                       <label for="re-password">Confirmar Contraseña:</label> 
                       <br> 
@@ -122,12 +136,12 @@
                   <tr>
                     <td>                      
                       <br> 
-                      <label for="pais"> Pais:</label> 
+                      <label for="pais"> Distrito:</label> 
                       <br> 
                       <input id="pais" required="" type="pais"> 
                       <br> 
                     </td>                  
-                    <td>                      
+                    <td colspan="2">                      
                       <br> 
                       <label for="pais">Fecha de Nacimiento:</label> 
                       <br> 
@@ -156,7 +170,7 @@
                       <span>Depilación</span> 
                       <br>
                     </td>
-                    <td>
+                    <td colspan="2">
                       <input type="checkbox" value="Sauna"> 
                       <span>Sauna</span> 
                       <br> 
@@ -172,7 +186,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td colspan="3" style="text-align: center">
                       <br>
                       <input id="publish" type="submit" value="Registrarse">
                     </td>

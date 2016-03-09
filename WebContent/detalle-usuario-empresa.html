@@ -33,9 +33,9 @@
   	          <li><a href=".\opinion.html">OPINAR</a></li>
   	        </ul>
   	     </div>
-	       <div style="left: 700px; top: 209px; width: 190px; height: auto; position: absolute; z-index: 395;">
+	       <div style="left: 640px; top: 209px; width: 270px; height: auto; position: absolute; z-index: 450;">
 	        <div>
-	         <p style="text-align: center;"><span style="color: rgb(235, 240, 242); font-family: sans-serif; font-size: 14px;">Hola&nbsp;<a style="color: rgb(235, 240, 242);" href="detalle-usuario.html">Maria</a>&nbsp;<a style="color: rgb(235, 240, 242);" href="cerrar-sesion.html">CERRAR SESION</a></span></p>
+	         <p style="text-align: center;"><span style="color: rgb(235, 240, 242); font-family: sans-serif; font-size: 14px;">Hola&nbsp;<a style="color: rgb(235, 240, 242);" href="detalle-usuario-empresa.html">UsuarioSci1</a>&nbsp;<a style="color: rgb(235, 240, 242);" href="cerrar-sesion.html">CERRAR SESION</a></span></p>
 	        </div>
 	       </div>
 	       <div style="left: 900px; top: 209px; width: 170px; height: auto; position: absolute; z-index: 395;">
@@ -54,69 +54,79 @@
               <div style="width: 100%; position: absolute; top: 0px; left: 0px; z-index: 391; height: auto; padding: 20px;">
                 <div style="position: relative; border-color: rgb(87, 87, 87); background-color: rgba(255, 255, 255, 0); opacity: 1; border-style: none; background-image: none; box-shadow: rgba(0, 0, 0, 0.498039) 0px 0px 0px 0px;" >
                   <h3>
-                  <span color="#e85858" face="Maven Pro, sans-serif" size="4" style="color: #e85858; font-family: 'Maven Pro', sans-serif; font-size: large;"><b>DATOS DE USUARIO</b></span>
+                  <span color="#e85858" face="Maven Pro, sans-serif" size="4" style="color: #e85858; font-family: 'Maven Pro', sans-serif; font-size: large;"><b>DATOS DE NEGOCIO</b></span>
                   </h3>
                 </div>
 
-                <table style="font-family: Calibri, sans-serif; width:70%;">
+                <table style="font-family: Calibri;">
                   <tr>
                     <td>
-                      <label for="name"><b>Nombre y Apellidos:</b></label>María Colmenares
+                      <label for="name"><b>Nombre del Establecimiento:</b></label>Scissors
                     </td>
                     <td>
-                      <label for="usuario"><b>Usuario:</b></label> Maria10
+                      <label for="name"><b>Usuario:</b></label>UsuarioSci1 
+                    </td>
+                  </tr>                
+                  <tr>
+                    <td>
+                      <label for="e-mai"><b>Correo Electrónico:</b></label>correo@scissors.com
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="direction"><b>Dirección del Establecimiento:</b></label>Coronel Inclán 600
                     </td> 
-                  <tr>
                     <td>
-                      <label for="e-mai"><b>Correo Electrónico:</b></label>maria_colme@hotmail.com
-                    </td>                      
-                  </tr>
-                  <tr>
-                    <td>                      
-                      <label for="pais"> <b>Distrito:</b></label>Lima, Lima, Cercado de Lima 
-                    </td>                  
-                    <td>                      
-                      <label for="pais">Fecha de Nacimiento:</label><br>15/11/1980
-                    </td>                  
-                  </tr>
-                  <tr>
-                    <td>
-                      <br> 
-                      Servicios que buscas normalmente:
+                      <label for="distrito"><b>Distrito:</b></label>Miraflores
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <input type="checkbox" value="peluquería" checked onclick="return false;"> 
+                      <label for="telefono"><b>Teléfono del establecimiento:</b></label>969587561
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <br>
+                      Servicios que Ofrecen:
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" value="peluquería" onclick="return false;"> 
                       <span>Peluquería</span> 
                       <br> 
-                      <input type="checkbox" value="spa" checked onclick="return false"/> 
+                      <input type="checkbox" value="spa" onclick="return false;"> 
                       <span>Spa</span> 
                       <br> 
-                      <input type="checkbox" value="Manicure y/o Pedicure" checked onclick="return false"/> 
+                      <input type="checkbox" value="Manicure y/o Pedicure" onclick="return false;"> 
                       <span>Manicure y/o Pedicure</span> 
                       <br> 
-                      <input type="checkbox" value="depilación" onclick="return false"/> 
-                      <span>Depilación</span> 
-                      <br>
-                    </td>
-                    <td colspan="2">
-                      <input type="checkbox" value="Sauna" onclick="return false"/> 
-                      <span>Sauna</span> 
-                      <br> 
-                      <input type="checkbox" value="masajes" onclick="return false"/> 
-                      <span>Masajes</span> 
-                      <br> 
-                      <input type="checkbox" value="tratamientos" onclick="return false"/> 
-                      <span>Tratamiento de la piel</span> 
-                      <br> 
-                      <input type="checkbox" value="cabello" onclick="return false"/> 
+                      <input type="checkbox" value="cabello" onclick="return false;"> 
                       <span>Tratamiento de cabello</span> 
                       <br> 
                     </td>
+                    <td>
+                      <input type="checkbox" value="Sauna" checked onclick="return false;"> 
+                      <span>Sauna</span> 
+                      <br> 
+                      <input type="checkbox" value="masajes" checked onclick="return false;"> 
+                      <span>Masajes</span> 
+                      <br> 
+                      <input type="checkbox" value="tratamientos" onclick="return false;"> 
+                      <span>Tratamiento de la piel</span> 
+                      <br> 
+                      <input type="checkbox" value="depilación" onclick="return false;"> 
+                      <span>Depilación</span> 
+                      <br>
+                    </td>
+                    <td>
+                      <br>
+                    </td>
                   </tr>
                   <tr>
-                    <td colspan="2" align="center">
+                    <td style="text-align: center;" colspan="2">
+                      <br>
                       <input id="publish" type="submit" value="Modificar">
                     </td>
                   </tr>
@@ -130,32 +140,32 @@
               <div style="width: 100%; position: absolute; top: 0px; left: 0px; z-index: 391; height: auto; padding: 20px;">
                 <div style="position: relative; border-color: rgb(87, 87, 87); background-color: rgba(255, 255, 255, 0); opacity: 1; border-style: none; background-image: none; box-shadow: rgba(0, 0, 0, 0.498039) 0px 0px 0px 0px;" >
                   <h3>
-                  <span color="#e85858" face="Maven Pro, sans-serif" size="4" style="color: #e85858; font-family: 'Maven Pro', sans-serif; font-size: large;"><b>OPINIONES INGRESADAS</b></span>
+                  <span color="#e85858" face="Maven Pro, sans-serif" size="4" style="color: #e85858; font-family: 'Maven Pro', sans-serif; font-size: large;"><b>OPINIONES RECIBIDAS</b></span>
                   </h3>
                 </div>
 
                 <table id="opiniones">
                   <tr>
                     <th>Fecha</th>
-                    <th>Establecimiento</th>
+                    <th>Usuario</th>
                     <th>Distrito</th>
                     <th>Título Opinión</th>
                   </tr>
                   <tr>
                     <td>10/01/2015</td>
-                    <td>Scissors</td>
+                    <td>Maria1</td>
                     <td>Miraflores</td>
                     <td><a href="detalle-opinion.html">Buen lugar para atenderse</a></td>
                   </tr>
                   <tr>
                     <td>01/05/2014</td>
-                    <td>Amarige</td>
+                    <td>DBVilla1980</td>
                     <td>San Isidro</td>
                     <td><a href="detalle-opinion.html">Muy caro, no vale la pena</a></td>
                   </tr>
                   <tr>
                     <td>01/04/2013</td>
-                    <td>Berlotte</td>
+                    <td>Charli12</td>
                     <td>Magdalena</td>
                     <td><a href="detalle-opinion.html">Lugar pequeño pero atiende muy bien</a></td>
                   </tr>

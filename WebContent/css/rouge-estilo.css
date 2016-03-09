@@ -126,3 +126,30 @@ label.star:before {
 }
 
 /* Fin CSS para el efecto de calificación */
+
+/* Estilo para tabla*/
+
+#opiniones {
+    font-family: "Calibri", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+}
+
+#opiniones td, #opiniones th {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
+
+#opiniones tr:nth-child(even){background-color: #f2f2f2}
+
+#opiniones tr:hover {background-color: #ddd;}
+
+#opiniones th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #E43248; /* #4CAF50;*/
+    color: white;
+}
+
+/* Fin estilo para tabla*/

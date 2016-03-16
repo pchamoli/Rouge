@@ -21,6 +21,10 @@ public class UsuarioBean {
 	private String nombre_tipo_usuario;
 	private String nombre_tipo_documento;
 	
+	public UsuarioBean(){
+		
+	}
+	
 	public UsuarioBean(int id, String nombre, String fechanac, String email,
 			String fecha_creacion, String fecha_actualizacion,
 			String usuario_creacion, String usuario_actualizacion,

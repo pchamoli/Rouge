@@ -20,7 +20,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		PreparedStatement pstm=null;
 		try{
 			cn= new MiConexionBD().getConexion();
-			String sql="insert into tb_usuario(id_usuario,nom_usuario,fecha_nac,email,d_fecha_creacion,codigo_usuario,contrasena,ubigeo,servicio,sexo) values(null,?,STR_TO_DATE(?,'%d-%m-%Y'),?,?,?,?,?,?,?)";
+			String sql="insert into tb_usuario(id_usuario,nom_usuario,fecha_nac,email,d_fecha_creacion,codigo_usuario,contrasena,ubigeo,sexo) values(null,?,STR_TO_DATE(?,'%d-%m-%Y'),?,?,?,?,?,?)";
 			pstm = cn.prepareStatement(sql);
 			pstm.setString(1, obj.getNombre());
 			pstm.setString(2, obj.getFechanac());
@@ -35,7 +35,6 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 			//pstm.setInt(6, obj.getTipo_usuario());
 			//pstm.setInt(7, obj.getTipo_documento());
 			pstm.setInt(7, obj.getUbigeo());
-			pstm.setInt(8, obj.getServicio());
 			pstm.setString(9, obj.getSexo());
 			estado = pstm.executeUpdate();
 			

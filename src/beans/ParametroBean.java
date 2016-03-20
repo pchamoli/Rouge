@@ -1,6 +1,6 @@
 package beans;
 
-public class Parametrobean {
+public class ParametroBean {
 
 	private int n_codigo_parametro;
 	private int n_secuencia;
@@ -19,7 +19,7 @@ public class Parametrobean {
 	private String c_usuario_actualizacion;
 	private String c_Usuario_Creacion;
 	
-	public Parametrobean(int n_codigo_parametro, int n_secuencia,
+	public ParametroBean(int n_codigo_parametro, int n_secuencia,
 			String c_sistema, String v_nombre_parametro, String v_valor,
 			String v_descripcion, String v_descripcion_larga, String v_default,
 			String v_equivalencia, String c_estado, int n_codigo_padre,

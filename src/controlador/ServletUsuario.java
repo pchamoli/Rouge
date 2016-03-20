@@ -95,8 +95,7 @@ public class ServletUsuario extends HttpServlet {
 		String contrasena = request.getParameter("txtPassword");
 		int	tipo_usuario = Integer.parseInt(request.getParameter("txtTipousu"));
 		int	numero_documento = Integer.parseInt(request.getParameter("txtNumdoc"));
-		int	tipo_documento = Integer.parseInt(request.getParameter("txtTipodoc"));
-		int ubigeo = Integer.parseInt(request.getParameter("txtDistrito"));
+		int ubigeo = Integer.parseInt(request.getParameter("cboDistrito"));
 		//String distrito = request.getParameter("txtDistrito");
 		String sexo = request.getParameter("cboSexo");
 		
@@ -115,7 +114,6 @@ public class ServletUsuario extends HttpServlet {
 		bean.setContrasena(contrasena);
 		bean.setTipo_usuario(tipo_usuario);
 		bean.setNumero_documento(numero_documento);
-		bean.setCod_tipo_documento(tipo_documento);
 		bean.setUbigeo(ubigeo);
 		bean.setSexo(sexo);
 		
@@ -141,7 +139,6 @@ public class ServletUsuario extends HttpServlet {
 		//int numero_documento = Integer.parseInt(request.getParameter("txtNumdoc"));
 		//int tipo_documento = Integer.parseInt(request.getParameter("txtTipodoc"));
 		int ubigeo = Integer.parseInt(request.getParameter("cboDistrito"));
-		int servicio = Integer.parseInt(request.getParameter("chbServicio"));
 		String sexo = request.getParameter("cboSexo");
 		
 		
@@ -161,12 +158,11 @@ public class ServletUsuario extends HttpServlet {
 		//bean.setNumero_documento(numero_documento);
 		//bean.setCod_tipo_documento(tipo_documento);
 		bean.setUbigeo(ubigeo);
-		bean.setServicio(servicio);
 		bean.setSexo(sexo);
 		
 		servi.RegistraUsuario(bean);
 		
-		request.getRequestDispatcher("/RegistroUsuario.jsp").forward(request,response);
+		request.getRequestDispatcher("/reg-strate.jsp").forward(request,response);
 		
 	}
 	

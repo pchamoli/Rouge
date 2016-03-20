@@ -1,3 +1,4 @@
+
 package dao;
 
 import java.sql.Connection;
@@ -10,12 +11,14 @@ import java.util.List;
 import util.ConexionDB;
 
 import beans.LocalBean;
+import beans.NegocioBean;
+import beans.UsuarioBean;
 import interfaces.LocalDAO;
 
 public class MySqlLocalDAO implements LocalDAO {
 
-	@Override
-	public LocalBean buscarlocalxnombre(String lugar, String nombre){
+	/*@Override
+	public LocalBean buscarLocalNombre(String nombreLocal, String nombre){
 		
 		LocalBean lb = null;
 		
@@ -64,6 +67,35 @@ public class MySqlLocalDAO implements LocalDAO {
 		}
 		return lb;
 		
+	}*/
+	
+	@Override
+	public List<LocalBean> buscarLocalNombre(String nombreLocal, int offset, int nroRegistros){
+		return null;
 	}
-
+	
+	@Override
+	public List<LocalBean> buscarLocalLugar(int lugar, int offset, int nroRegistros){
+		return null;
+	}
+	
+	@Override
+	public List<LocalBean> buscarLocalServicio(String codigoUsuario, List<Integer> servicios, int offset, int nroRegistros){
+		return null;
+	}
+	
+	@Override
+	public LocalBean obtenerDetalleLocal(String codigoUsuario, int codigoLocal){
+		return null;
+	}
+	
+	@Override
+	public LocalBean obtenerDatosUsuarioNegocio(String codigoUsuario, int codigoLocal, int codigoNegocio){
+		return null;
+	}
+	
+	@Override
+	public int registrarNegocio(UsuarioBean objUsuario, NegocioBean objNegocio){ 
+		return 0;
+	}
 }

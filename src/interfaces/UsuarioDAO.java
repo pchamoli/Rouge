@@ -4,8 +4,9 @@ import beans.UsuarioBean;
 
 public interface UsuarioDAO {
 	
-	public int RegistraUsuario(UsuarioBean obj);
-	public int ModificaUsuario(UsuarioBean obj);
-	public UsuarioBean logueausuario(String login, String clave);
+	public int registrarUsuario(UsuarioBean obj);
+	public UsuarioBean loguearUsuario(String login, String clave);
+	public UsuarioBean obtenerDatosUsuario(String codigoUsuario);
+	public int cerrarSesion(String codigoUsuario);
 	
 }

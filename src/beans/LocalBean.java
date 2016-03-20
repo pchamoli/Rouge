@@ -14,7 +14,9 @@ public class LocalBean {
 	private String d_fecha_creacion;
 	private String d_fecha_actualizacion;
 	
-
+	private NegocioBean ONegocioBean;
+	//private UbigeoBean OUbigeoBean;
+	
 	public int getId() {
 		return id;
 	}
@@ -104,6 +106,8 @@ public class LocalBean {
 	}
 	
 	
-	
+	public NegocioBean getNegocioBean(){
+		return ONegocioBean;
+	}
 	
 }

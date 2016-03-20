@@ -13,6 +13,27 @@ import interfaces.UsuarioDAO;
 public class MySqlUsuarioDAO implements UsuarioDAO {
 
 	@Override
+	public int registrarUsuario(UsuarioBean obj){
+		return 0;
+	}
+		
+	@Override
+	public UsuarioBean loguearUsuario(String login, String clave){
+		return null;
+	}
+	
+	@Override
+	public UsuarioBean obtenerDatosUsuario(String codigoUsuario){
+		return null;
+	}
+	
+	@Override
+	public int cerrarSesion(String codigoUsuario){
+		return 0;
+	}
+	
+	/*
+	@Override
 	public int RegistraUsuario(UsuarioBean obj) {
 		
 		int estado=-1;
@@ -139,6 +160,6 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 			}
 		}
 		return usu;
-	}
+	}*/
 		}
 

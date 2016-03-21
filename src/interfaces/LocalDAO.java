@@ -11,5 +11,6 @@ public interface LocalDAO {
 	public LocalBean obtenerDetalleLocal(String codigoUsuario, int codigoLocal);
 	public LocalBean obtenerDatosUsuarioNegocio(String codigoUsuario, int codigoLocal, int codigoNegocio);
 	public int registrarNegocio(UsuarioBean objUsuario, NegocioBean objNegocio);
+
 	
 }

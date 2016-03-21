@@ -22,6 +22,7 @@ public class UsuarioService {
 		return 0;
 		
 	}
+
 	
 	public UsuarioBean loguearUsuario(String login, String clave){
 		
@@ -29,17 +30,30 @@ public class UsuarioService {
 			
 			return dao.loguearUsuario(login, clave);
 			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		return null;
 		
-	}
-	
-	public UsuarioBean obtenerDatosUsuario(String codigoUsuario){
+	}			
+			
+/*
+	public int ModificaUsuario(UsuarioBean obj){
 		
+		try {
+			
+			return dao.ModificaUsuario(obj);
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+*/
+			
+	public UsuarioBean obtenerDatosUsuario(String codigoUsuario){
 		return null;
 	}
 	

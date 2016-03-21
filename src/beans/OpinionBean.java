@@ -12,7 +12,6 @@ public class OpinionBean {
 	private String d_fecha_creacion;
 	private String d_fecha_actualizacion;
 	private int id_local;
-	
 	private String nomlocal;
 	private String nombreusuario;
 	

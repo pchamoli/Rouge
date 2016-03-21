@@ -7,7 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 import util.ConexionDB;
+=======
+import util.MiConexionBD;
+>>>>>>> refs/remotes/origin/branch1
 
 import beans.OpinionBean;
 import interfaces.OpinionDAO;
@@ -23,7 +27,11 @@ public class MySqlOpinionDAO implements OpinionDAO {
 		PreparedStatement pstm = null;
 	
 		try {
+
 			conn = ConexionDB.getConexion();
+
+			//conn = new MiConexionBD().getConexion();
+
 			String sql = "insert into tb_opinion values(null,?,?,?,?,?,?,?,?,?)";
 			pstm = conn.prepareStatement(sql);
 			
@@ -66,7 +74,11 @@ public class MySqlOpinionDAO implements OpinionDAO {
 		
 		try {
 			
+
 			conn = ConexionDB.getConexion();
+
+			//conn = new MiConexionBD().getConexion();
+
 			String sql="SELECT op.titulo,op.calificacion,lc.nom_local FROM tb_opinion op inner join tb_local lc on lc.id_local=op.id_local" +
 					"where lc.nom_local=?";
 			

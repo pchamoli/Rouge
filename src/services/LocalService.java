@@ -5,6 +5,7 @@ import java.util.List;
 import beans.LocalBean;
 import beans.NegocioBean;
 import beans.UsuarioBean;
+
 import interfaces.LocalDAO;
 import factory.Factory;
 
@@ -58,11 +59,13 @@ public class LocalService {
 	public LocalBean obtenerDatosUsuarioNegocio(String codigoUsuario, int codigoLocal, int codigoNegocio){
 		try {
 			return dao.obtenerDatosUsuarioNegocio(codigoUsuario, codigoLocal, codigoNegocio);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		return null;
+
 	}
 	
 	public int registrarNegocio(UsuarioBean objUsuario, NegocioBean objNegocio){
@@ -73,5 +76,7 @@ public class LocalService {
 		}
 		
 		return 0;
+
+		
 	}
 }

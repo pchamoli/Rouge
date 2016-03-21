@@ -1,4 +1,3 @@
-
 package dao;
 
 import java.sql.Connection;
@@ -8,11 +7,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 import util.ConexionDB;
 
 import beans.LocalBean;
 import beans.NegocioBean;
 import beans.UsuarioBean;
+=======
+import util.MiConexionBD;
+
+import beans.LocalBean;
+>>>>>>> refs/remotes/origin/branch1
 import interfaces.LocalDAO;
 
 public class MySqlLocalDAO implements LocalDAO {
@@ -27,7 +32,11 @@ public class MySqlLocalDAO implements LocalDAO {
 		ResultSet rs = null;
 		
 		try {
+
 			conn = ConexionDB.getConexion();
+
+			//conn = new MiConexionBD().getConexion();
+
 			String sql="select * from tb_local where dir_local=? and nom_local=?";
 			pstm = conn.prepareStatement(sql);
 			
@@ -98,4 +107,5 @@ public class MySqlLocalDAO implements LocalDAO {
 	public int registrarNegocio(UsuarioBean objUsuario, NegocioBean objNegocio){ 
 		return 0;
 	}
+
 }

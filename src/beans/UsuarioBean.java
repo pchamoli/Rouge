@@ -10,14 +10,13 @@ public class UsuarioBean {
 	private String usuario_creacion;
 	private String usuario_actualizacion;
 	private String codigo_usuario;
-	private int estado;
-	private String contraseña; 
+	private String estado;
+	private String contrasena; 
 	private int tipo_usuario;
 	private int numero_documento; 
 	private int tipo_documento;
 	private int ubigeo;
 	private String sexo;
-	
 	private String nombre_tipo_usuario;
 	private String nombre_tipo_documento;
 	
@@ -33,6 +32,7 @@ public class UsuarioBean {
 			int ubigeo, String sexo, String nombre_tipo_usuario,
 			String nombre_tipo_documento, int tipo_documento) {
 		super();
+
 		this.id = id;
 		this.nombre = nombre;
 		this.fechanac = fechanac;
@@ -43,7 +43,7 @@ public class UsuarioBean {
 		this.usuario_actualizacion = usuario_actualizacion;
 		this.codigo_usuario = codigo_usuario;
 		this.estado = estado;
-		this.contraseña = contraseña;
+		this.contrasena = contrasena;
 		this.tipo_usuario = tipo_usuario;
 		this.numero_documento = numero_documento;
 		this.tipo_documento = tipo_documento;
@@ -125,20 +125,26 @@ public class UsuarioBean {
 		this.codigo_usuario = codigo_usuario;
 	}
 
-	public int getEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(int estado) {
+
+
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 
-	public String getContraseña() {
-		return contraseña;
+
+
+	public String getContrasena() {
+		return contrasena;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+
+
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 
 	public int getTipo_usuario() {
@@ -161,8 +167,8 @@ public class UsuarioBean {
 		return tipo_documento;
 	}
 
-	public void setCod_tipo_documento(int cod_tipo_documento) {
-		this.tipo_documento = cod_tipo_documento;
+	public void setTipo_documento(int tipo_documento) {
+		this.tipo_documento = tipo_documento;
 	}
 
 	public int getUbigeo() {
@@ -197,6 +203,8 @@ public class UsuarioBean {
 		this.nombre_tipo_documento = nombre_tipo_documento;
 	}
 
-	
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
 	
 }

@@ -8,5 +8,6 @@ public interface UsuarioDAO {
 	public UsuarioBean loguearUsuario(String login, String clave);
 	public UsuarioBean obtenerDatosUsuario(String codigoUsuario);
 	public int cerrarSesion(String codigoUsuario);
+
 	
 }

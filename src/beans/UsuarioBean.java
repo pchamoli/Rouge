@@ -27,7 +27,7 @@ public class UsuarioBean {
 	public UsuarioBean(int id, String nombre, String fechanac, String email,
 			String fecha_creacion, String fecha_actualizacion,
 			String usuario_creacion, String usuario_actualizacion,
-			String codigo_usuario, int estado, String contraseña,
+			String codigo_usuario, String estado, String contrasena,
 			int tipo_usuario, int numero_documento, int cod_tipo_documento,
 			int ubigeo, String sexo, String nombre_tipo_usuario,
 			String nombre_tipo_documento, int tipo_documento) {
@@ -129,8 +129,6 @@ public class UsuarioBean {
 		return estado;
 	}
 
-
-
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
@@ -186,7 +184,7 @@ public class UsuarioBean {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-
+	
 	public String getNombre_tipo_usuario() {
 		return nombre_tipo_usuario;
 	}
@@ -203,8 +201,6 @@ public class UsuarioBean {
 		this.nombre_tipo_documento = nombre_tipo_documento;
 	}
 
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
+
 	
 }

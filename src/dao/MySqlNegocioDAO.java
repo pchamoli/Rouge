@@ -7,7 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 import util.ConexionDB;
+=======
+import util.MiConexionBD;
+>>>>>>> refs/remotes/origin/branch1
 
 import beans.NegocioBean;
 import interfaces.NegocioDAO;
@@ -24,7 +28,11 @@ public class MySqlNegocioDAO implements NegocioDAO {
 		
 		try {
 			
+
 			conn = ConexionDB.getConexion();
+
+			//conn = new MiConexionBD().getConexion();
+
 			String sql="insert into tb_negocio values(null,?,?,?,?,?,?,?,?,?,?,?)";
 			pstm = conn.prepareStatement(sql);
 			
@@ -67,6 +75,9 @@ public class MySqlNegocioDAO implements NegocioDAO {
 		
 		try {
 			conn = ConexionDB.getConexion();
+
+			//conn = new MiConexionBD().getConexion();
+
 			String sql="update tb_negocio set nom_negocio=?,dir_negocio=?,tel_negocio=?," +
 					   "email_negocio=?,cod_ubigeo=?,id_foto=?,c_Usuario_Actualizacion=?, "+
 					   "c_Usuario_Creacion=?,d_fecha_creacion=?,d_fecha_actualizacion=?,calificacion_final=? where id_negocio=?";
@@ -114,7 +125,10 @@ public class MySqlNegocioDAO implements NegocioDAO {
 		ResultSet rs = null;
 		
 		try {
+
 			conn = ConexionDB.getConexion();
+			//conn = new MiConexionBD().getConexion();
+
 			String sql="select dir_negocio,tel_negocio,email_negocio" +
 					"from tb_negocio n inner join tb_ubigeo ub" +
 					"on n.cod_ubigeo = ub.cod_ubigeo " +

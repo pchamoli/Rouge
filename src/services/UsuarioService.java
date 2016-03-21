@@ -10,12 +10,11 @@ public class UsuarioService {
 	
 	UsuarioDAO dao = fabrica.getUsuarioDAO();
 	
-	
-	public int RegistraUsuario(UsuarioBean obj){
+	public int registrarUsuario(UsuarioBean obj){
 	
 		try {
 			
-			return dao.RegistraUsuario(obj);
+			return dao.registrarUsuario(obj);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -23,24 +22,13 @@ public class UsuarioService {
 		return 0;
 		
 	}
-	public int ModificaUsuario(UsuarioBean obj){
+
+	
+	public UsuarioBean loguearUsuario(String login, String clave){
 		
 		try {
 			
-			return dao.ModificaUsuario(obj);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return 0;
-	}
-	
-	
-	public UsuarioBean logueausuario(String login, String clave){
-		
-		try {
-			
-			return dao.logueausuario(login, clave);
+			return dao.loguearUsuario(login, clave);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -48,7 +36,29 @@ public class UsuarioService {
 		
 		return null;
 		
+	}			
+			
+/*
+	public int ModificaUsuario(UsuarioBean obj){
+		
+		try {
+			
+			return dao.ModificaUsuario(obj);
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+*/
+			
+	public UsuarioBean obtenerDatosUsuario(String codigoUsuario){
+		return null;
 	}
 	
+	public int cerrarSesion(String codigoUsuario){
+		return 0;
+	}
 	
 }

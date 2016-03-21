@@ -13,7 +13,8 @@ public class LocalBean {
 	private String c_Usuario_Creacion; 
 	private String d_fecha_creacion;
 	private String d_fecha_actualizacion;
-	
+	private NegocioBean ONegocioBean;
+	private UbigeoBean OLocalUbigeoBean;
 
 	public int getId() {
 		return id;
@@ -103,7 +104,20 @@ public class LocalBean {
 		this.d_fecha_actualizacion = d_fecha_actualizacion;
 	}
 	
+	public NegocioBean getONegocioBean(){
+		return ONegocioBean;
+	}
 	
+	public void setONegocioBean(NegocioBean oNegocioBean){
+		ONegocioBean = oNegocioBean;
+	}
 	
-	
+	public UbigeoBean getOLocalUbigeoBean() {
+		return OLocalUbigeoBean;
+	}
+
+	public void setOLocalUbigeoBean(UbigeoBean oLocalUbigeoBean) {
+		OLocalUbigeoBean = oLocalUbigeoBean;
+	}
+
 }

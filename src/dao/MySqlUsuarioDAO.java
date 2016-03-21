@@ -9,29 +9,60 @@ import util.ConexionDB;
 import util.MiConexionBD;
 
 import beans.UsuarioBean;
+import beans.Resultado;
 import interfaces.UsuarioDAO;
 
 public class MySqlUsuarioDAO implements UsuarioDAO {
 
 	@Override
 
-	public int registrarUsuario(UsuarioBean obj){
+	/*public int registrarUsuario(UsuarioBean obj){
 		return 0;
+	}*/
+	public Resultado registrarUsuario(UsuarioBean obj){
+		
+		Resultado res = new Resultado();
+		UsuarioBean ur = new UsuarioBean();
+		
+		ur.setCodigo_usuario("PCHAMOLI");
+		ur.setEstado("X");
+		
+		res.setObjetoResultado(ur);
+		
+		return res;
 	}
 		
 	@Override
-	public UsuarioBean loguearUsuario(String login, String clave){
-		return null;
+	public Resultado loguearUsuario(String login, String clave){
+		UsuarioBean usuario = new UsuarioBean();
+		Resultado res = new Resultado();
+
+		/* lógica de negocio aquí */
+		
+		res.setObjetoResultado(usuario);
+
+		return res;
 	}
 	
 	@Override
-	public UsuarioBean obtenerDatosUsuario(String codigoUsuario){
-		return null;
+	public Resultado obtenerDatosUsuario(String codigoUsuario){
+		UsuarioBean usuario = new UsuarioBean();
+		Resultado res = new Resultado();
+
+		/* lógica de negocio aquí */
+		
+		res.setObjetoResultado(usuario);
+		
+		return res;
 	}
 	
 	@Override
-	public int cerrarSesion(String codigoUsuario){
-		return 0;
+	public Resultado cerrarSesion(String codigoUsuario){
+		Resultado res = new Resultado();
+		
+		res.setCodigo(0);
+		
+		return res;
 	}
 	
 	/*

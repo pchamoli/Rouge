@@ -45,6 +45,10 @@ public class ParametroBean {
 		this.c_Usuario_Creacion = c_Usuario_Creacion;
 	}
 
+	public ParametroBean() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getN_codigo_parametro() {
 		return n_codigo_parametro;
 	}

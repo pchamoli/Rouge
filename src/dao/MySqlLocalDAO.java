@@ -12,6 +12,7 @@ import util.ConexionDB;
 import beans.LocalBean;
 import beans.NegocioBean;
 import beans.UsuarioBean;
+import beans.Resultado;
 
 import util.MiConexionBD;
 
@@ -76,33 +77,73 @@ public class MySqlLocalDAO implements LocalDAO {
 	}*/
 	
 	@Override
-	public List<LocalBean> buscarLocalNombre(String nombreLocal, int offset, int nroRegistros){
-		return null;
+	public Resultado buscarLocalNombre(String nombreLocal, int offset, int nroRegistros){
+		//List<LocalBean>
+		List<Object> lista = new ArrayList<Object>();
+		Resultado res = new Resultado();
+		
+		/* Colocar lógica de búsqueda aquí*/
+		
+		res.setListaObjetos(lista);
+		
+		return res;
 	}
 	
 	@Override
-	public List<LocalBean> buscarLocalLugar(int lugar, int offset, int nroRegistros){
-		return null;
+	public Resultado buscarLocalLugar(int lugar, int offset, int nroRegistros){
+		//List<LocalBean>
+		List<Object> lista = new ArrayList<Object>();
+		Resultado res = new Resultado();
+
+		/* Colocar lógica de búsqueda aquí*/
+		
+		res.setListaObjetos(lista);
+		return res;
 	}
 	
 	@Override
-	public List<LocalBean> buscarLocalServicio(String codigoUsuario, List<Integer> servicios, int offset, int nroRegistros){
-		return null;
+	public Resultado buscarLocalServicio(String codigoUsuario, List<Integer> servicios, int offset, int nroRegistros){
+		//List<LocalBean>
+		List<Object> lista = new ArrayList<Object>();
+		Resultado res = new Resultado();
+
+		/* Colocar lógica de búsqueda aquí*/
+		
+		res.setListaObjetos(lista);
+		return res;
 	}
 	
 	@Override
-	public LocalBean obtenerDetalleLocal(String codigoUsuario, int codigoLocal){
-		return null;
+	public Resultado obtenerDetalleLocal(String codigoUsuario, int codigoLocal){
+		//LocalBean
+		LocalBean localBean = new LocalBean();
+		Resultado res = new Resultado();
+		
+		res.setObjetoResultado(localBean);
+		
+		return res;
 	}
 	
 	@Override
-	public LocalBean obtenerDatosUsuarioNegocio(String codigoUsuario, int codigoLocal, int codigoNegocio){
-		return null;
+	public Resultado obtenerDatosUsuarioNegocio(String codigoUsuario, int codigoLocal, int codigoNegocio){
+		//LocalBean
+		LocalBean localBean = new LocalBean();
+		Resultado res = new Resultado();
+		
+		res.setObjetoResultado(localBean);
+		
+		return res;
 	}
 	
 	@Override
-	public int registrarNegocio(UsuarioBean objUsuario, NegocioBean objNegocio){ 
-		return 0;
+	public Resultado registrarNegocio(UsuarioBean objUsuario, NegocioBean objNegocio){ 
+		//int
+		Resultado res = new Resultado();
+		int codigoError = 0;
+		
+		res.setCodigo(codigoError);
+		
+		return res;
 	}
 
 }

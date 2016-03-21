@@ -59,7 +59,7 @@ public class ServletUsuario extends HttpServlet {
 		String correo = request.getParameter("txtEmail");
 		String clave = request.getParameter("txtPassword");
 		
-		UsuarioBean obj = servi.logueausuario(correo);
+		UsuarioBean obj = servi.loguearUsuario(correo, clave);
 		
 		if(obj!=null){
 			if(obj.getContrasena().equals(clave)){
@@ -117,7 +117,7 @@ public class ServletUsuario extends HttpServlet {
 		bean.setUbigeo(ubigeo);
 		bean.setSexo(sexo);
 		
-		servi.ModificaUsuario(bean);
+		//servi.ModificaUsuario(bean);
 		
 		
 	}
@@ -160,7 +160,7 @@ public class ServletUsuario extends HttpServlet {
 		bean.setUbigeo(ubigeo);
 		bean.setSexo(sexo);
 		
-		servi.RegistraUsuario(bean);
+		//servi.RegistraUsuario(bean);
 		
 		request.getRequestDispatcher("/reg-strate.jsp").forward(request,response);
 		

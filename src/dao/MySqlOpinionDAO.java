@@ -7,11 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
+
 import util.ConexionDB;
-=======
 import util.MiConexionBD;
->>>>>>> refs/remotes/origin/branch1
+
 
 import beans.OpinionBean;
 import interfaces.OpinionDAO;

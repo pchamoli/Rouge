@@ -7,17 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
 import util.ConexionDB;
 
 import beans.LocalBean;
 import beans.NegocioBean;
 import beans.UsuarioBean;
-=======
+
 import util.MiConexionBD;
 
-import beans.LocalBean;
->>>>>>> refs/remotes/origin/branch1
 import interfaces.LocalDAO;
 
 public class MySqlLocalDAO implements LocalDAO {

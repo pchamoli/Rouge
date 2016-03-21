@@ -5,11 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-<<<<<<< HEAD
 import util.ConexionDB;
-=======
 import util.MiConexionBD;
->>>>>>> refs/remotes/origin/branch1
 
 import beans.UsuarioBean;
 import interfaces.UsuarioDAO;

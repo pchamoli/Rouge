@@ -4,3 +4,6 @@ WebContent/WEB-INF/lib/commons-beanutils-1.7.0.jar
 *.jar
 WebContent/WEB-INF/lib/commons-beanutils-1.7.0.jar
 *.jar
+.classpath
+
+.classpath

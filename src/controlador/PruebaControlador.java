@@ -85,7 +85,7 @@ public class PruebaControlador extends HttpServlet {
 		
 		if (res != null) {
 			UsuarioBean ub = (UsuarioBean) res.getObjetoResultado();
-			
+						
 			System.out.println("Estado: " + ub.getEstado());
 			System.out.println("Código Usuario: " + ub.getCodigo_usuario());
 		}

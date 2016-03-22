@@ -17,10 +17,14 @@ public class MySqlUbigeoDAO implements UbigeoDAO {
 		Resultado res = new Resultado();
 		
 		/* Colocar lógica de búsqueda aquí*/
+		// Invocar a P_OBTENER_UBIGEO
 		
+		// Devolver la lista de Ubigeos en objeto Resultado
 		res.setListaObjetos(lista);
+		res.setCodigo(0);
+		res.setMensaje("");
 		
-		return null;
+		return res;
 	}
 
 }

@@ -16,7 +16,12 @@ public class MySqlParametroDAO implements ParametroDAO {
 		
 		/* Colocar lógica de búsqueda aquí*/
 		
+		// Llamar a P_OBTENER_PARAMETRO y colocar resultado en objeto lista
+		
+		// Envía objeto lista a objeto Resultado	
 		res.setListaObjetos(lista);
+		res.setCodigo(0);
+		res.setMensaje("");
 		
 		return res;
 	}

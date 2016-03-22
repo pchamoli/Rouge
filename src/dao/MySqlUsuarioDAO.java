@@ -24,10 +24,14 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		Resultado res = new Resultado();
 		UsuarioBean ur = new UsuarioBean();
 		
-		ur.setCodigo_usuario("PCHAMOLI");
-		ur.setEstado("X");
+		// Invocar a P_INS_REGISTRAR_USUARIO con los parámetros indicados en obj
+				
+		// Obtener el id del usuario e ingresarlo en el obj
 		
-		res.setObjetoResultado(ur);
+		// Se envía obj como retorno
+		res.setObjetoResultado(obj);
+		res.setCodigo(0);
+		res.setMensaje("");
 		
 		return res;
 	}
@@ -38,10 +42,28 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		Resultado res = new Resultado();
 
 		/* lógica de negocio aquí */
+		// Invocar a P_LOGUEAR_USUARIO con login y clave
 		
+		// Si el logueo está correcto invocar a obtenerDatosUsuarioBean y colocar datos en objeto usuario
+				
+		// Envía objeto usuario como parte del Resultado
 		res.setObjetoResultado(usuario);
+		res.setCodigo(0);
+		res.setMensaje("");
 
 		return res;
+	}
+	
+	public UsuarioBean obtenerDatosUsuarioBean(String codigoUsuario){
+		UsuarioBean usuario = new UsuarioBean();
+
+		/* lógica de negocio aquí */
+		
+		// Invocar a P_OBTENER_DATOS_USUARIO
+		
+		// Colocar información en objeto usuario
+
+		return usuario;
 	}
 	
 	@Override
@@ -50,6 +72,10 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		Resultado res = new Resultado();
 
 		/* lógica de negocio aquí */
+		
+		// Invocar a obtenerDatosUsuarioBean 
+		
+		// Colocar objeto de retorno en objeto Resultado
 		
 		res.setObjetoResultado(usuario);
 		
@@ -60,7 +86,11 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 	public Resultado cerrarSesion(String codigoUsuario){
 		Resultado res = new Resultado();
 		
+		/* lógica de negocio aquí*/
+		// Invocar a P_CERRAR_SESION
+		
 		res.setCodigo(0);
+		res.setMensaje("");
 		
 		return res;
 	}

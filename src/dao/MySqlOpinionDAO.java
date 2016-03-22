@@ -23,6 +23,14 @@ public class MySqlOpinionDAO implements OpinionDAO {
 	public Resultado registrarOpinion (String codigoUsuario, OpinionBean obj){
 		Resultado res = new Resultado();
 		
+		/* Colocar lógica de búsqueda aquí*/
+		
+		// Llamar a P_REGISTRAR_OPINION, y luego a P_REGISTRAR_SERVICIO_OPINION 
+		// tantas veces como servicios eligió el cliente
+		// colocar parámetros INOUT en objeto obj
+		
+		// Retorna objeto resultado
+		res.setObjetoResultado(obj);		
 		res.setCodigo(0);
 		
 		return res;
@@ -34,6 +42,8 @@ public class MySqlOpinionDAO implements OpinionDAO {
 		Resultado res = new Resultado();
 
 		/* Colocar lógica de búsqueda aquí*/
+		// Llamar a P_LISTAR_OPINIONES_LOCAL y llenar el objeto lista con los registros que existan
+		
 		
 		res.setListaObjetos(lista);
 		return res;
@@ -43,10 +53,12 @@ public class MySqlOpinionDAO implements OpinionDAO {
 	public Resultado obtenerDetalleOpinion(String codigoUsuario, int idOpinion){
 		//OpinionBean
 		Resultado res = new Resultado();
-		OpinionBean or = new OpinionBean();
+		OpinionBean objOpinionBean = new OpinionBean();
 		
+		/* Colocar lógica de búsqueda aquí*/
+		// Llamar a P_OBTENER_DETALLE_OPINION y llenar el objeto objOpinionBean con la información recibida
 		
-		res.setObjetoResultado(or);
+		res.setObjetoResultado(objOpinionBean);
 		
 		return res;
 	}
@@ -56,7 +68,10 @@ public class MySqlOpinionDAO implements OpinionDAO {
 		List<Object> lista = new ArrayList<Object>();
 		Resultado res = new Resultado();
 
-		/* Colocar lógica de búsqueda aquí*/
+		/* Colocar lógica de búsqueda aquí */
+		
+		// Llamar a P_LISTAR_OPINIONES_USUARIO y llenar el objeto lista con los registros que existan
+		
 		
 		res.setListaObjetos(lista);
 		return res;

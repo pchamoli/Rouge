@@ -12,6 +12,7 @@ import util.ConexionDB;
 import beans.LocalBean;
 import beans.NegocioBean;
 import beans.UsuarioBean;
+import beans.UbigeoBean;
 import beans.Resultado;
 
 import util.MiConexionBD;
@@ -84,7 +85,12 @@ public class MySqlLocalDAO implements LocalDAO {
 		
 		/* Colocar lógica de búsqueda aquí*/
 		
+		// Invocar a P_BUSCAR_LOCAL_NOMBRE y colocar información de retorno en objeto lista
+		
+		// Retorna objeto lista en objeto Resultado
 		res.setListaObjetos(lista);
+		res.setCodigo(0);
+		res.setMensaje("");
 		
 		return res;
 	}
@@ -96,8 +102,12 @@ public class MySqlLocalDAO implements LocalDAO {
 		Resultado res = new Resultado();
 
 		/* Colocar lógica de búsqueda aquí*/
+		// Invocar a P_BUSCAR_LOCAL_LUGAR y colocar información de retorno en objeto lista
 		
 		res.setListaObjetos(lista);
+		res.setCodigo(0);
+		res.setMensaje("");
+		
 		return res;
 	}
 	
@@ -108,8 +118,12 @@ public class MySqlLocalDAO implements LocalDAO {
 		Resultado res = new Resultado();
 
 		/* Colocar lógica de búsqueda aquí*/
+		// Invocar a P_BUSCAR_LOCAL_SERVICIO y colocar información de retorno en objeto lista
 		
 		res.setListaObjetos(lista);
+		res.setCodigo(0);
+		res.setMensaje("");
+		
 		return res;
 	}
 	
@@ -119,7 +133,12 @@ public class MySqlLocalDAO implements LocalDAO {
 		LocalBean localBean = new LocalBean();
 		Resultado res = new Resultado();
 		
+		/* Colocar lógica de búsqueda aquí */
+		// Invocar a P_OBTENER_DETALLE_LOCAL y colocar información de retorno en objeto localBean
+		
 		res.setObjetoResultado(localBean);
+		res.setCodigo(0);
+		res.setMensaje("");
 		
 		return res;
 	}
@@ -128,9 +147,26 @@ public class MySqlLocalDAO implements LocalDAO {
 	public Resultado obtenerDatosUsuarioNegocio(String codigoUsuario, int codigoLocal, int codigoNegocio){
 		//LocalBean
 		LocalBean localBean = new LocalBean();
+		NegocioBean negocioBean = new NegocioBean();
+		UbigeoBean ubigeoBean = new UbigeoBean();
+		UsuarioBean usuarioBean = new UsuarioBean();
+		List<Object> listaObjetos = new ArrayList<Object>();
+		
 		Resultado res = new Resultado();
 		
-		res.setObjetoResultado(localBean);
+		/* Colocar lógica de búsqueda aquí */
+		// Invocar a P_OBTENER_DATOS_USUARIO_NEGOCIO y colocar información de retorno en objetos
+		// localBean / negocioBean / ubigeoBean / usuarioBean
+		
+		//Envía información de objetos a objeto Resultado
+		listaObjetos.add(localBean);
+		listaObjetos.add(negocioBean);
+		listaObjetos.add(ubigeoBean);
+		listaObjetos.add(usuarioBean);
+		
+		res.setListaObjetos(listaObjetos);
+		res.setCodigo(0);
+		res.setMensaje("");
 		
 		return res;
 	}
@@ -138,10 +174,21 @@ public class MySqlLocalDAO implements LocalDAO {
 	@Override
 	public Resultado registrarNegocio(UsuarioBean objUsuario, NegocioBean objNegocio){ 
 		//int
-		Resultado res = new Resultado();
 		int codigoError = 0;
 		
+		Resultado res = new Resultado();
+		List<Object> listaObjetos = new ArrayList<Object>();
+				
+		/* Colocar lógica de búsqueda aquí */
+		// Invocar a P_REGISTRAR_NEGOCIO y colocar información de retorno en objUsuario y objNegocio
+		
+				
+		//Envía información de objetos a objeto Resultado
+		listaObjetos.add(objUsuario);
+		listaObjetos.add(objNegocio);
+		
 		res.setCodigo(codigoError);
+		res.setMensaje("");
 		
 		return res;
 	}

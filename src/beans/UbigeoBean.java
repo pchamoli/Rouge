@@ -10,6 +10,10 @@ public class UbigeoBean {
 	private String descripcion;
 	private String v_descripcion_larga;
 	
+	public UbigeoBean(){
+		
+	}
+	
 	public UbigeoBean(int cod_ubigeo, String pais, String cod_departamento,
 			String cod_provincia, String cod_distrito, String descripcion,
 			String v_descripcion_larga) {

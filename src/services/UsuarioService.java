@@ -1,6 +1,7 @@
 package services;
 
 import beans.UsuarioBean;
+import beans.Resultado;
 import interfaces.UsuarioDAO;
 import factory.Factory;
 
@@ -10,7 +11,8 @@ public class UsuarioService {
 	
 	UsuarioDAO dao = fabrica.getUsuarioDAO();
 	
-	public int registrarUsuario(UsuarioBean obj){
+	//public int registrarUsuario(UsuarioBean obj){
+	public Resultado registrarUsuario(UsuarioBean obj){
 	
 		try {
 			
@@ -19,12 +21,13 @@ public class UsuarioService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return 0;
+		//return 0;
+		return null;
 		
 	}
 
 	
-	public UsuarioBean loguearUsuario(String login, String clave){
+	public Resultado loguearUsuario(String login, String clave){
 		
 		try {
 			
@@ -53,12 +56,30 @@ public class UsuarioService {
 	}
 */
 			
-	public UsuarioBean obtenerDatosUsuario(String codigoUsuario){
+	public Resultado obtenerDatosUsuario(String codigoUsuario){
+
+		try {
+			
+			return dao.obtenerDatosUsuario(codigoUsuario);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return null;
+
 	}
 	
-	public int cerrarSesion(String codigoUsuario){
-		return 0;
+	public Resultado cerrarSesion(String codigoUsuario){
+		try {
+			
+			return dao.cerrarSesion(codigoUsuario);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 	
 }

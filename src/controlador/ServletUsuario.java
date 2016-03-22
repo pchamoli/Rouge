@@ -59,7 +59,7 @@ public class ServletUsuario extends HttpServlet {
 		String correo = request.getParameter("txtEmail");
 		String clave = request.getParameter("txtPassword");
 		
-		UsuarioBean obj = servi.loguearUsuario(correo, clave);
+		UsuarioBean obj = (UsuarioBean) servi.loguearUsuario(correo, clave).getObjetoResultado();
 		
 		if(obj!=null){
 			if(obj.getContrasena().equals(clave)){

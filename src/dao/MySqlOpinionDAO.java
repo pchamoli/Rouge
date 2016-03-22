@@ -13,10 +13,56 @@ import util.MiConexionBD;
 
 
 import beans.OpinionBean;
+import beans.Resultado;
+import beans.UsuarioBean;
 import interfaces.OpinionDAO;
 
 public class MySqlOpinionDAO implements OpinionDAO {
 
+	@Override
+	public Resultado registrarOpinion (String codigoUsuario, OpinionBean obj){
+		Resultado res = new Resultado();
+		
+		res.setCodigo(0);
+		
+		return res;
+	}
+	
+	public Resultado listarOpinionesLocal(String codigoUsuario, int idlocal, int offset, int nroRegistros){
+		//List<OpinionBean>
+		List<Object> lista = new ArrayList<Object>();
+		Resultado res = new Resultado();
+
+		/* Colocar lógica de búsqueda aquí*/
+		
+		res.setListaObjetos(lista);
+		return res;
+	}
+	
+	
+	public Resultado obtenerDetalleOpinion(String codigoUsuario, int idOpinion){
+		//OpinionBean
+		Resultado res = new Resultado();
+		OpinionBean or = new OpinionBean();
+		
+		
+		res.setObjetoResultado(or);
+		
+		return res;
+	}
+	
+	public Resultado listarOpinionesUsuario(String codigoUsuario, int offset, int nroRegistros){
+		//List<OpinionBean>
+		List<Object> lista = new ArrayList<Object>();
+		Resultado res = new Resultado();
+
+		/* Colocar lógica de búsqueda aquí*/
+		
+		res.setListaObjetos(lista);
+		return res;
+	}
+	
+	/*
 	@Override
 	public int registraopinion(OpinionBean obj) {
 		
@@ -119,5 +165,5 @@ public class MySqlOpinionDAO implements OpinionDAO {
 		}
 		
 		return salida;
-
-}}
+	}*/
+}

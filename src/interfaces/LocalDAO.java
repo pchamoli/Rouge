@@ -5,12 +5,23 @@ import java.util.*;
 
 public interface LocalDAO {
 
-	public List<LocalBean> buscarLocalNombre(String nombreLocal, int offset, int nroRegistros);
-	public List<LocalBean> buscarLocalLugar(int lugar, int offset, int nroRegistros);
-	public List<LocalBean> buscarLocalServicio(String codigoUsuario, List<Integer> servicios, int offset, int nroRegistros);
-	public LocalBean obtenerDetalleLocal(String codigoUsuario, int codigoLocal);
-	public LocalBean obtenerDatosUsuarioNegocio(String codigoUsuario, int codigoLocal, int codigoNegocio);
-	public int registrarNegocio(UsuarioBean objUsuario, NegocioBean objNegocio);
+	//List<LocalBean>
+	public Resultado buscarLocalNombre(String nombreLocal, int offset, int nroRegistros);
+	
+	//List<LocalBean>
+	public Resultado buscarLocalLugar(int lugar, int offset, int nroRegistros);
+	
+	//List<LocalBean>
+	public Resultado buscarLocalServicio(String codigoUsuario, List<Integer> servicios, int offset, int nroRegistros);
+	
+	//LocalBean
+	public Resultado obtenerDetalleLocal(String codigoUsuario, int codigoLocal);
+	
+	//LocalBean
+	public Resultado obtenerDatosUsuarioNegocio(String codigoUsuario, int codigoLocal, int codigoNegocio);
+	
+	//int
+	public Resultado registrarNegocio(UsuarioBean objUsuario, NegocioBean objNegocio);
 
 	
 }

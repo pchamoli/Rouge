@@ -1,5 +1,7 @@
 package beans;
 
+import java.util.*;
+
 public class OpinionBean {
 	
 	private int id_opinion;
@@ -14,6 +16,7 @@ public class OpinionBean {
 	private int id_local;
 	private String nomlocal;
 	private String nombreusuario;
+	private List<ServicioUsuarioBean> ListaServiciosUsuario;
 	
 	public int getId_opinion() {
 		return id_opinion;
@@ -88,6 +91,8 @@ public class OpinionBean {
 		this.nombreusuario = nombreusuario;
 	}
 	
-	
+	public List<ServicioUsuarioBean> getListaServiciosUsuario(){
+		return ListaServiciosUsuario;
+	}
 	
 }

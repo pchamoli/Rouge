@@ -10,24 +10,90 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.UsuarioBean;
+import beans.Resultado;
 import services.UsuarioService;
 
 /**
  * Servlet implementation class ClienteControlador
  */
+
+class Respuesta {
+	String os_descripcion_error="";
+	int oi_codigo_error=0;
+	int oi_nivel_error;
+	String[] objetoString;
+	Object objeto;
+
+	public void setRespuesta(String respuesta){
+		os_descripcion_error = respuesta;
+	}
+	
+	public void setCodigoError(int codigo){
+		oi_codigo_error = codigo;
+	}
+	
+	public String getRespuesta(){
+		return os_descripcion_error;
+	}
+	
+	public int getCodigoError(){
+		return oi_codigo_error;
+	}
+	
+	public void setObjeto(Object objParm){
+		objeto = objParm;
+	}
+	
+	public Object getObjeto(){
+		return objeto;
+	}
+}
+
 @WebServlet("/usuario")
 public class PruebaControlador extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	UsuarioService service = new UsuarioService();
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Respuesta obj = new Respuesta();
+		UsuarioBean lc = new UsuarioBean();
+		UsuarioBean lc2 = new UsuarioBean();
 		
 		String metodo=request.getParameter("metodo");
+		
+		//modificaRespuesta(obj);
+		//System.out.println(obj.os_descripcion_error);
+		
+		lc.setCodigo_usuario("Petter");
+		lc.setEstado("A");
+		
+		obj.setObjeto(lc);
+		
+		lc2 = (UsuarioBean) obj.getObjeto();
+		
+		System.out.println("LC2");
+		System.out.println(lc2.getCodigo_usuario());
+		System.out.println(lc2.getEstado());
+		System.out.println("LC");
+		System.out.println(lc2.getCodigo_usuario());
+		System.out.println(lc2.getEstado());
+		
+		UsuarioService us = new UsuarioService();
+		Resultado res = new Resultado();
+		
+		res = us.registrarUsuario(lc2);
+		
+		if (res != null) {
+			UsuarioBean ub = (UsuarioBean) res.getObjetoResultado();
+			
+			System.out.println("Estado: " + ub.getEstado());
+			System.out.println("Código Usuario: " + ub.getCodigo_usuario());
+		}
 		
 		if(metodo.equals("registrar")){
 			registrar(request, response);
 		}
-		
+				
 		else if(metodo.equals("listar")){
 			listar(request, response);
 		}
@@ -40,6 +106,11 @@ public class PruebaControlador extends HttpServlet {
 			actualizar(request, response);
 		}
 				
+	}
+	
+	public void modificaRespuesta(Respuesta obj){
+		obj.setCodigoError(5);
+		obj.setRespuesta("Respuesta modificada");
 	}
 	
 	protected void registrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

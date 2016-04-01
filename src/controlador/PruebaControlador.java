@@ -64,7 +64,7 @@ public class PruebaControlador extends HttpServlet {
 		//modificaRespuesta(obj);
 		//System.out.println(obj.os_descripcion_error);
 		
-		lc.setCodigo_usuario("Petter");
+		/*lc.setCodigo_usuario("Petter");
 		lc.setEstado("A");
 		
 		obj.setObjeto(lc);
@@ -77,17 +77,37 @@ public class PruebaControlador extends HttpServlet {
 		System.out.println("LC");
 		System.out.println(lc2.getCodigo_usuario());
 		System.out.println(lc2.getEstado());
-		
+		*/
 		UsuarioService us = new UsuarioService();
 		Resultado res = new Resultado();
 		
-		res = us.registrarUsuario(lc2);
+		//res = us.registrarUsuario(lc2);
+		res = us.loguearUsuario("pet.cham@gmail.com", "UPRUEBA");
+	
+		res = us.cerrarSesion("UPRUEBA");
 		
+		lc.setId(2);
+		lc.setNombre("Jhon");
+		lc.setFechanac("2015-12-11");
+		lc.setFecha_creacion("2015-12-11");
+		lc.setFecha_actualizacion("2015-12-11");
+		lc.setUsuario_creacion("jh");
+		lc.setUsuario_actualizacion("jhp");
+		lc.setCodigo_usuario("jh2");
+		lc.setEstado("e");
+		lc.setContrasena("loki");
+		lc.setUbigeo(10000);
+		lc.setTipo_usuario(1);
+		
+		res = us.registrarUsuario(lc);
+	
 		if (res != null) {
-			UsuarioBean ub = (UsuarioBean) res.getObjetoResultado();
+			/*UsuarioBean ub = (UsuarioBean) res.getObjetoResultado();
 						
 			System.out.println("Estado: " + ub.getEstado());
-			System.out.println("Código Usuario: " + ub.getCodigo_usuario());
+			System.out.println("Código Usuario: " + ub.getCodigo_usuario());*/
+			System.out.println(res.getCodigo());
+			
 		}
 		
 		if(metodo.equals("registrar")){

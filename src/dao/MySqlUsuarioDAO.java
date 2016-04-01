@@ -1,9 +1,13 @@
 package dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLType;
+import java.sql.Types;
+import java.util.ArrayList;
+import java.util.List;
 
 import util.ConexionDB;
 import util.MiConexionBD;
@@ -20,17 +24,66 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		return 0;
 	}*/
 	public Resultado registrarUsuario(UsuarioBean obj){
-		
+	
+		int id=0;
+		int codigoRetorno=0;
 		Resultado res = new Resultado();
 		UsuarioBean ur = new UsuarioBean();
+		
+		Connection conn = null;
+		
+		try {
+			conn = new MiConexionBD().getConexion();
+			
+			CallableStatement cstm = conn.prepareCall("{call P_INS_REGISTRAR_USUARIO(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+			cstm.setInt(1, 0);
+			cstm.setString(2, obj.getNombre());
+			cstm.setString(3, obj.getFechanac());
+			cstm.setString(4, obj.getEmail());
+			cstm.setString(5, obj.getFecha_creacion());
+			cstm.setString(6, obj.getFecha_actualizacion());
+			cstm.setString(7, obj.getUsuario_creacion());
+			cstm.setString(8,obj.getUsuario_actualizacion());
+			cstm.setString(9,obj.getCodigo_usuario());
+			cstm.setString(10,obj.getEstado());
+			cstm.setString(11,obj.getContrasena());
+			cstm.setInt(12,obj.getTipo_usuario());
+			cstm.setInt(13,obj.getNumero_documento());
+			cstm.setInt(14,obj.getTipo_documento());
+			cstm.setInt(15,obj.getUbigeo());
+			cstm.setString(16,obj.getSexo());
+			cstm.setInt(17,0);
+			
+			cstm.registerOutParameter("id", Types.INTEGER);
+			cstm.registerOutParameter("codigoRetorno", Types.INTEGER);
+			
+			cstm.executeUpdate();
+			
+			codigoRetorno = cstm.getInt(17);
+			id = cstm.getInt(1);
+			obj.setId(id);
+			
+			System.out.println(codigoRetorno);
+			System.out.println("Usuario registrado");
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(conn!=null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		// Invocar a P_INS_REGISTRAR_USUARIO con los parámetros indicados en obj
 				
 		// Obtener el id del usuario e ingresarlo en el obj
 		
 		// Se envía obj como retorno
-		res.setObjetoResultado(obj);
-		res.setCodigo(0);
+		res.setCodigo(codigoRetorno);
 		res.setMensaje("");
 		
 		return res;
@@ -38,18 +91,60 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		
 	@Override
 	public Resultado loguearUsuario(String login, String clave){
-		UsuarioBean usuario = new UsuarioBean();
-		Resultado res = new Resultado();
-
-		/* lógica de negocio aquí */
-		// Invocar a P_LOGUEAR_USUARIO con login y clave
+		int codigoRetorno=0;
+		String codigoUsuario="";
 		
-		// Si el logueo está correcto invocar a obtenerDatosUsuarioBean y colocar datos en objeto usuario
-				
+		UsuarioBean usuario = null;
+		Resultado res = new Resultado();
+		
+		/* lógica de negocio aquí */
+		
+		/* fin lógica de negocio */
+		
+		// Invocar a P_LOGUEAR_USUARIO con login y clave
+		Connection conn = null;
+
+		try {
+			conn = new MiConexionBD().getConexion();
+			
+			CallableStatement cstm = conn.prepareCall("{call P_LOGUEAR_USUARIO(?,?,?,?)}");
+			
+			cstm.setString(1, login);
+			cstm.setString(2, clave);
+			
+			cstm.registerOutParameter(3, Types.INTEGER);
+			cstm.setInt(3, 0);
+			cstm.registerOutParameter(4, Types.VARCHAR);	
+			cstm.setString(4, "");
+			
+			cstm.execute();
+			
+			codigoRetorno = cstm.getInt(3);
+			codigoUsuario = cstm.getString(4);
+			
+			System.out.println(codigoRetorno);
+			System.out.println(codigoUsuario);
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(conn!=null)
+					conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		// Si el logueo está correcto invocar a obtenerDatosUsuarioBean 
+		if (codigoRetorno == 0){
+			usuario = obtenerDatosUsuarioBean(codigoUsuario);
+			res.setMensaje("");
+		}
+
 		// Envía objeto usuario como parte del Resultado
+		res.setCodigo(codigoRetorno);
 		res.setObjetoResultado(usuario);
-		res.setCodigo(0);
-		res.setMensaje("");
 
 		return res;
 	}
@@ -58,6 +153,50 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		UsuarioBean usuario = new UsuarioBean();
 
 		/* lógica de negocio aquí */
+		Connection conn = null;
+		List<UsuarioBean>lista = new ArrayList<UsuarioBean>();
+		
+		try {
+			conn = new MiConexionBD().getConexion();
+			System.out.println("llamando sp" +codigoUsuario);
+			CallableStatement cstm = conn.prepareCall("{call P_OBTENER_DATOS_USUARIO(?)}");
+			cstm.setString(1,codigoUsuario);
+				
+			ResultSet rs = cstm.executeQuery();
+			
+			if(rs.next()){
+				usuario = new UsuarioBean();
+				usuario.setId(rs.getInt(1));
+				usuario.setNombre(rs.getString(2));
+				usuario.setFechanac(rs.getString(3));
+				usuario.setEmail(rs.getString(4));
+				usuario.setFecha_creacion(rs.getString(5));
+				usuario.setFecha_actualizacion(rs.getString(6));
+				usuario.setUsuario_actualizacion(rs.getString(7));
+				usuario.setUsuario_creacion(rs.getString(8));
+				usuario.setCodigo_usuario(rs.getString(9));
+				usuario.setEstado(rs.getString(10));
+				usuario.setContrasena(rs.getString(11));
+				usuario.setTipo_usuario(rs.getInt(12));
+				usuario.setNumero_documento(rs.getInt(13));
+				usuario.setUbigeo(rs.getInt(14));
+				usuario.setSexo(rs.getString(15));
+				lista.add(usuario);
+				
+			}
+			System.out.println("cantidad de registros");
+			System.out.println(lista.size());
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(conn!=null)
+					conn.close();
+			} catch (Exception e2) {
+					e2.printStackTrace();
+			}
+		}
 		
 		// Invocar a P_OBTENER_DATOS_USUARIO
 		
@@ -75,7 +214,10 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		
 		// Invocar a obtenerDatosUsuarioBean 
 		
+		usuario = obtenerDatosUsuarioBean(codigoUsuario);
+		
 		// Colocar objeto de retorno en objeto Resultado
+		
 		
 		res.setObjetoResultado(usuario);
 		
@@ -84,12 +226,39 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 	
 	@Override
 	public Resultado cerrarSesion(String codigoUsuario){
+		
+		int codError = 0;
 		Resultado res = new Resultado();
 		
 		/* lógica de negocio aquí*/
 		// Invocar a P_CERRAR_SESION
+		Connection conn = null;
+		try {
+			conn = new MiConexionBD().getConexion();
+			CallableStatement cstm = conn.prepareCall("{call P_CERRAR_SESION (?,?)}");
+			
+			cstm.setString(1,codigoUsuario);
+			cstm.setInt(2,0);
+			
+			cstm.registerOutParameter("codError", Types.INTEGER);
+			cstm.execute();
+			
+			codError = cstm.getInt(2);
+			
+			System.out.println("Salio de sesion");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(conn!=null)
+					conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
 		
-		res.setCodigo(0);
+		res.setCodigo(codError);
 		res.setMensaje("");
 		
 		return res;

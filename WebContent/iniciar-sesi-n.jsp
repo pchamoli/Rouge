@@ -1,7 +1,4 @@
-<%@ taglib uri="http://displaytag.sf.net/el" prefix="display" %>
-<%@ taglib uri="http://displaytag.sf.net" prefix="displaySession" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+
 
 <!DOCTYPE html>
  <html>

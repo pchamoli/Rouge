@@ -19,6 +19,7 @@ import beans.Resultado;
 import util.MiConexionBD;
 
 import interfaces.LocalDAO;
+import sun.lwawt.macosx.CSystemTray;
 
 public class MySqlLocalDAO implements LocalDAO {
 
@@ -85,10 +86,10 @@ public class MySqlLocalDAO implements LocalDAO {
 		List<Object> lista = new ArrayList<Object>();
 		Resultado res = new Resultado();
 		
-		/* Colocar lógica de búsqueda aquí*/
+		/* Colocar lï¿½gica de bï¿½squeda aquï¿½*/
 		Connection conn = null;
 		try {
-			// Invocar a P_BUSCAR_LOCAL_NOMBRE y colocar información de retorno en objeto lista
+			// Invocar a P_BUSCAR_LOCAL_NOMBRE y colocar informaciï¿½n de retorno en objeto lista
 			conn = new MiConexionBD().getConexion();
 			CallableStatement cstm = conn.prepareCall("{call P_BUSCAR_LOCAL_NOMBRE(?,?,?)}");
 			System.out.println("buscando local " +nombreLocal+" "+offset+" "+nroRegistros);
@@ -139,11 +140,53 @@ public class MySqlLocalDAO implements LocalDAO {
 	@Override
 	public Resultado buscarLocalLugar(int lugar, int offset, int nroRegistros){
 		//List<LocalBean>
+		LocalBean lcb = new LocalBean();
 		List<Object> lista = new ArrayList<Object>();
 		Resultado res = new Resultado();
 
-		/* Colocar lógica de búsqueda aquí*/
-		// Invocar a P_BUSCAR_LOCAL_LUGAR y colocar información de retorno en objeto lista
+		/* Colocar lï¿½gica de bï¿½squeda aquï¿½*/
+		Connection conn = null;
+		try {
+			conn = new MiConexionBD().getConexion();
+			CallableStatement cstm = conn.prepareCall("{call P_BUSCAR_LOCAL_LUGAR(?,?,?)}");
+			System.out.println("Verificando local " +lugar+offset+nroRegistros);
+			cstm.setInt(1, lugar);
+			cstm.setInt(2, offset);
+			cstm.setInt(3, nroRegistros);
+			
+			ResultSet rs = cstm.executeQuery();
+			
+			while(rs.next()){
+				lcb = new LocalBean();
+				lcb.setId(rs.getInt(1));
+				lcb.setNom_local(rs.getString(2));
+				lcb.setDir_local(rs.getString(3));
+				lcb.setTel_local(rs.getString(4));
+				lcb.setEmail(rs.getString(5));
+				lcb.setCod_ubigeo(rs.getInt(6));
+				lcb.setId_negocio(rs.getInt(7));
+				lcb.setC_Usuario_Actualizacion(rs.getString(8));
+				lcb.setC_Usuario_Creacion(rs.getString(9));
+				lcb.setD_fecha_creacion(rs.getString(10));
+				lcb.setD_fecha_actualizacion(rs.getString(11));
+				lista.add(lcb);
+			}
+			
+			System.out.println("Cantidad de registros");
+			System.out.println(lista.size());
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			try{
+				if(conn!=null)
+					conn.close();
+			}catch(SQLException e2){
+				e2.printStackTrace();
+			}
+		}
+		
+		// Invocar a P_BUSCAR_LOCAL_LUGAR y colocar informaciï¿½n de retorno en objeto lista
 		
 		res.setListaObjetos(lista);
 		res.setCodigo(0);
@@ -158,8 +201,8 @@ public class MySqlLocalDAO implements LocalDAO {
 		List<Object> lista = new ArrayList<Object>();
 		Resultado res = new Resultado();
 
-		/* Colocar lógica de búsqueda aquí*/
-		// Invocar a P_BUSCAR_LOCAL_SERVICIO y colocar información de retorno en objeto lista
+		/* Colocar lï¿½gica de bï¿½squeda aquï¿½*/
+		// Invocar a P_BUSCAR_LOCAL_SERVICIO y colocar informaciï¿½n de retorno en objeto lista
 		
 		res.setListaObjetos(lista);
 		res.setCodigo(0);
@@ -171,13 +214,77 @@ public class MySqlLocalDAO implements LocalDAO {
 	@Override
 	public Resultado obtenerDetalleLocal(String codigoUsuario, int codigoLocal){
 		//LocalBean
+		ArrayList<Object> lista = new ArrayList<Object>();
 		LocalBean localBean = new LocalBean();
+		NegocioBean negocioBean = new NegocioBean();
+		UbigeoBean ubigeoBean = new UbigeoBean();
 		Resultado res = new Resultado();
 		
-		/* Colocar lógica de búsqueda aquí */
-		// Invocar a P_OBTENER_DETALLE_LOCAL y colocar información de retorno en objeto localBean
+		/* Colocar lï¿½gica de bï¿½squeda aquï¿½ */
+		Connection conn = null;
+		// Invocar a P_OBTENER_DETALLE_LOCAL y colocar informaciï¿½n de retorno en objeto localBean
+		try{
+			conn = new MiConexionBD().getConexion();
+			CallableStatement cstm = conn.prepareCall("{call P_OBTENER_DETALLE_LOCAL(?,?)}");
+			cstm.setString(1, codigoUsuario);
+			cstm.setInt(2, codigoLocal);
+			
+			ResultSet rs = cstm.executeQuery();
+			if(rs.next()){
+				System.out.println("Revisando datos");
+				localBean = new LocalBean();
+				localBean.setId(rs.getInt(1));
+				localBean.setNom_local(rs.getString(2));
+				localBean.setDir_local(rs.getString(3));
+				localBean.setTel_local(rs.getString(4));
+				localBean.setEmail(rs.getString(5));
+				localBean.setCod_ubigeo(rs.getInt(6));
+				localBean.setId_negocio(rs.getInt(7));
+				localBean.setC_Usuario_Actualizacion(rs.getString(8));
+				localBean.setC_Usuario_Creacion(rs.getString(9));
+				localBean.setD_fecha_creacion(rs.getString(10));
+				localBean.setD_fecha_actualizacion(rs.getString(11));
+				lista.add(localBean);
+				negocioBean = new NegocioBean();
+				negocioBean.setId_negocio(rs.getInt(1));
+				negocioBean.setNombre(rs.getString(2));
+				negocioBean.setDireccion(rs.getString(3));
+				negocioBean.setTelefono(rs.getString(4));
+				negocioBean.setEmail(rs.getString(5));
+				negocioBean.setCod_ubigeo(rs.getInt(6));
+				negocioBean.setId_negocio(rs.getInt(7));
+				negocioBean.setC_usuario_actualizacion(rs.getString(8));
+				negocioBean.setC_usuario_creacion(rs.getString(9));
+				negocioBean.setD_fecha_creacion(rs.getString(10));
+				negocioBean.setD_fecha_actualizacion(rs.getString(11));
+				negocioBean.setCalificacionfinal(rs.getDouble(12));
+				lista.add(negocioBean);
+				ubigeoBean = new UbigeoBean();
+				ubigeoBean.setCod_ubigeo(rs.getInt(1));
+				ubigeoBean.setPais(rs.getString(2));
+				ubigeoBean.setCod_departamento(rs.getString(3));
+				ubigeoBean.setCod_provincia(rs.getString(4));
+				ubigeoBean.setCod_distrito(rs.getString(5));
+				ubigeoBean.setDescripcion(rs.getString(6));
+				ubigeoBean.setV_descripcion_larga(rs.getString(7));
+				lista.add(ubigeoBean);
+				
+				System.out.println("Cantidad de Listas");
+				System.out.println(lista.size());
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(conn!=null)
+					conn.close();
+			}catch(SQLException e2){
+				e2.printStackTrace();
+			}
+		}
 		
-		res.setObjetoResultado(localBean);
+		res.setListaObjetos(lista);
 		res.setCodigo(0);
 		res.setMensaje("");
 		
@@ -195,11 +302,11 @@ public class MySqlLocalDAO implements LocalDAO {
 		
 		Resultado res = new Resultado();
 		
-		/* Colocar lógica de búsqueda aquí */
-		// Invocar a P_OBTENER_DATOS_USUARIO_NEGOCIO y colocar información de retorno en objetos
+		/* Colocar lï¿½gica de bï¿½squeda aquï¿½ */
+		// Invocar a P_OBTENER_DATOS_USUARIO_NEGOCIO y colocar informaciï¿½n de retorno en objetos
 		// localBean / negocioBean / ubigeoBean / usuarioBean
 		
-		//Envía información de objetos a objeto Resultado
+		//Envï¿½a informaciï¿½n de objetos a objeto Resultado
 		listaObjetos.add(localBean);
 		listaObjetos.add(negocioBean);
 		listaObjetos.add(ubigeoBean);
@@ -220,11 +327,11 @@ public class MySqlLocalDAO implements LocalDAO {
 		Resultado res = new Resultado();
 		List<Object> listaObjetos = new ArrayList<Object>();
 				
-		/* Colocar lógica de búsqueda aquí */
-		// Invocar a P_REGISTRAR_NEGOCIO y colocar información de retorno en objUsuario y objNegocio
+		/* Colocar lï¿½gica de bï¿½squeda aquï¿½ */
+		// Invocar a P_REGISTRAR_NEGOCIO y colocar informaciï¿½n de retorno en objUsuario y objNegocio
 		
 				
-		//Envía información de objetos a objeto Resultado
+		//Envï¿½a informaciï¿½n de objetos a objeto Resultado
 		listaObjetos.add(objUsuario);
 		listaObjetos.add(objNegocio);
 		

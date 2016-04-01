@@ -88,7 +88,7 @@ public class PruebaControlador extends HttpServlet {
 		//res = us.loguearUsuario("pet.cham@gmail.com", "UPRUEBA");
 	
 		//res = us.cerrarSesion("UPRUEBA");
-		
+		/*
 		lc.setId(2);
 		lc.setNombre("Jhon");
 		lc.setFechanac("2015-12-11");
@@ -101,7 +101,7 @@ public class PruebaControlador extends HttpServlet {
 		lc.setContrasena("loki");
 		lc.setUbigeo(10000);
 		lc.setTipo_usuario(1);
-		
+		*/
 		//res = us.registrarUsuario(lc);
 		
 		//UbigeoService ubs = new UbigeoService();
@@ -110,20 +110,25 @@ public class PruebaControlador extends HttpServlet {
 		//ParametroService rsl = new ParametroService();
 		//res = rsl.obtenerParametro("UPRUEBA", 1);
 		
-		LocalService lcs = new LocalService();
-		res = lcs.buscarLocalNombre("NEGOCIO"
-				+ "", 0, 10);
+		//LocalService lcs = new LocalService();
+		//res = lcs.buscarLocalNombre("NEGOCIO"
+			//	+ "", 0, 10);
+		
+		LocalService lcs1 = new LocalService();
+		res = lcs1.buscarLocalLugar(140105, 0, 10);
+		
+		//res = lcs1.obtenerDetalleLocal("1", 1);
 		
 		if (res != null) {
 			/*UsuarioBean ub = (UsuarioBean) res.getObjetoResultado();
 						
 			System.out.println("Estado: " + ub.getEstado());
-			System.out.println("Código Usuario: " + ub.getCodigo_usuario());*/
+			System.out.println("Cï¿½digo Usuario: " + ub.getCodigo_usuario());*/
 			System.out.println(res.getCodigo());
 			
 		}
 		
-		if(metodo.equals("registrar")){
+		/*if(metodo.equals("registrar")){
 			registrar(request, response);
 		}
 				
@@ -138,7 +143,7 @@ public class PruebaControlador extends HttpServlet {
 		else if (metodo.equals("actualizar")){
 			actualizar(request, response);
 		}
-				
+			*/	
 	}
 	
 	public void modificaRespuesta(Respuesta obj){

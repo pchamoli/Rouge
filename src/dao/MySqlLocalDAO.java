@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -80,12 +81,52 @@ public class MySqlLocalDAO implements LocalDAO {
 	@Override
 	public Resultado buscarLocalNombre(String nombreLocal, int offset, int nroRegistros){
 		//List<LocalBean>
+		LocalBean lcb = new LocalBean();
 		List<Object> lista = new ArrayList<Object>();
 		Resultado res = new Resultado();
 		
 		/* Colocar lógica de búsqueda aquí*/
+		Connection conn = null;
+		try {
+			// Invocar a P_BUSCAR_LOCAL_NOMBRE y colocar información de retorno en objeto lista
+			conn = new MiConexionBD().getConexion();
+			CallableStatement cstm = conn.prepareCall("{call P_BUSCAR_LOCAL_NOMBRE(?,?,?)}");
+			System.out.println("buscando local " +nombreLocal+" "+offset+" "+nroRegistros);
+			cstm.setString(1, nombreLocal);
+			cstm.setInt(2, offset);
+			cstm.setInt(3, nroRegistros);
+			ResultSet rs = cstm.executeQuery();
+			
+			while(rs.next()){
+				lcb = new LocalBean();
+				lcb.setId(rs.getInt(1));
+				lcb.setNom_local(rs.getString(2));
+				lcb.setDir_local(rs.getString(3));
+				lcb.setTel_local(rs.getString(4));
+				lcb.setEmail(rs.getString(5));
+				lcb.setCod_ubigeo(rs.getInt(6));
+				lcb.setId_negocio(rs.getInt(7));
+				lcb.setC_Usuario_Actualizacion(rs.getString(8));
+				lcb.setC_Usuario_Creacion(rs.getString(9));
+				lcb.setD_fecha_creacion(rs.getString(10));
+				lcb.setD_fecha_actualizacion(rs.getString(11));
+				lista.add(lcb);
+			
+			}
+			System.out.println("Cantidad de registros");
+			System.out.println(lista.size());
+			
 		
-		// Invocar a P_BUSCAR_LOCAL_NOMBRE y colocar información de retorno en objeto lista
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(conn!=null)
+					conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
 		
 		// Retorna objeto lista en objeto Resultado
 		res.setListaObjetos(lista);

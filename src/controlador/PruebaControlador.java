@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.UsuarioBean;
 import beans.Resultado;
+import services.LocalService;
+import services.ParametroService;
+import services.UbigeoService;
 import services.UsuarioService;
 
 /**
@@ -82,9 +85,9 @@ public class PruebaControlador extends HttpServlet {
 		Resultado res = new Resultado();
 		
 		//res = us.registrarUsuario(lc2);
-		res = us.loguearUsuario("pet.cham@gmail.com", "UPRUEBA");
+		//res = us.loguearUsuario("pet.cham@gmail.com", "UPRUEBA");
 	
-		res = us.cerrarSesion("UPRUEBA");
+		//res = us.cerrarSesion("UPRUEBA");
 		
 		lc.setId(2);
 		lc.setNombre("Jhon");
@@ -99,8 +102,18 @@ public class PruebaControlador extends HttpServlet {
 		lc.setUbigeo(10000);
 		lc.setTipo_usuario(1);
 		
-		res = us.registrarUsuario(lc);
-	
+		//res = us.registrarUsuario(lc);
+		
+		//UbigeoService ubs = new UbigeoService();
+		//res = ubs.obtenerUbigeo("jh2", "604", "01", "00", "00", 0, 5);
+		
+		//ParametroService rsl = new ParametroService();
+		//res = rsl.obtenerParametro("UPRUEBA", 1);
+		
+		LocalService lcs = new LocalService();
+		res = lcs.buscarLocalNombre("NEGOCIO"
+				+ "", 0, 10);
+		
 		if (res != null) {
 			/*UsuarioBean ub = (UsuarioBean) res.getObjetoResultado();
 						

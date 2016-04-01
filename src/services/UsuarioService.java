@@ -55,6 +55,16 @@ public class UsuarioService {
 		return null;
 	}
 */
+	public UsuarioBean obtenerDatosUsuarioBean(String codigoUsuario){
+		
+		try {
+			return dao.obtenerDatosUsuarioBean(codigoUsuario);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 			
 	public Resultado obtenerDatosUsuario(String codigoUsuario){
 

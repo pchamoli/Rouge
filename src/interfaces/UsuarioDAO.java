@@ -14,4 +14,6 @@ public interface UsuarioDAO {
 	//public int cerrarSesion(String codigoUsuario);
 	public Resultado cerrarSesion(String codigoUsuario);
 	
+	public UsuarioBean obtenerDatosUsuarioBean(String codigoUsuario);
+	
 }

@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.UsuarioBean;
 import beans.Resultado;
+import services.LocalService;
+import services.ParametroService;
+import services.UbigeoService;
 import services.UsuarioService;
 
 /**
@@ -82,10 +85,10 @@ public class PruebaControlador extends HttpServlet {
 		Resultado res = new Resultado();
 		
 		//res = us.registrarUsuario(lc2);
-		res = us.loguearUsuario("pet.cham@gmail.com", "UPRUEBA");
+		//res = us.loguearUsuario("pet.cham@gmail.com", "UPRUEBA");
 	
-		res = us.cerrarSesion("UPRUEBA");
-		
+		//res = us.cerrarSesion("UPRUEBA");
+		/*
 		lc.setId(2);
 		lc.setNombre("Jhon");
 		lc.setFechanac("2015-12-11");
@@ -98,19 +101,34 @@ public class PruebaControlador extends HttpServlet {
 		lc.setContrasena("loki");
 		lc.setUbigeo(10000);
 		lc.setTipo_usuario(1);
+		*/
+		//res = us.registrarUsuario(lc);
 		
-		res = us.registrarUsuario(lc);
-	
+		//UbigeoService ubs = new UbigeoService();
+		//res = ubs.obtenerUbigeo("jh2", "604", "01", "00", "00", 0, 5);
+		
+		//ParametroService rsl = new ParametroService();
+		//res = rsl.obtenerParametro("UPRUEBA", 1);
+		
+		//LocalService lcs = new LocalService();
+		//res = lcs.buscarLocalNombre("NEGOCIO"
+			//	+ "", 0, 10);
+		
+		LocalService lcs1 = new LocalService();
+		res = lcs1.buscarLocalLugar(140105, 0, 10);
+		
+		//res = lcs1.obtenerDetalleLocal("1", 1);
+		
 		if (res != null) {
 			/*UsuarioBean ub = (UsuarioBean) res.getObjetoResultado();
 						
 			System.out.println("Estado: " + ub.getEstado());
-			System.out.println("Código Usuario: " + ub.getCodigo_usuario());*/
+			System.out.println("Cï¿½digo Usuario: " + ub.getCodigo_usuario());*/
 			System.out.println(res.getCodigo());
 			
 		}
 		
-		if(metodo.equals("registrar")){
+		/*if(metodo.equals("registrar")){
 			registrar(request, response);
 		}
 				
@@ -125,7 +143,7 @@ public class PruebaControlador extends HttpServlet {
 		else if (metodo.equals("actualizar")){
 			actualizar(request, response);
 		}
-				
+			*/	
 	}
 	
 	public void modificaRespuesta(Respuesta obj){
